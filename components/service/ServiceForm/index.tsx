@@ -50,7 +50,7 @@ export default function ServiceForm({ service, defaultMeta, onSaved }: ServiceFo
 
   const [metaModalOpen, setMetaModalOpen] = useState(false);
 
-  const { createOrUpdateService } = useCreateOrUpdateService(service?.id ?? null);
+  const { createOrUpdateService, isMutating } = useCreateOrUpdateService(service?.id ?? null);
 
   useEffect(() => {
     return () => {};
@@ -110,6 +110,7 @@ export default function ServiceForm({ service, defaultMeta, onSaved }: ServiceFo
 
         <FormFooter
           disabled={!isDirty || !isValid}
+          loading={isMutating}
           label={t("saveService")}
           cancelButton={
             isDirty ? (

@@ -62,7 +62,7 @@ export default function ArrangementForm({
   const [metaModalOpen, setMetaModalOpen] = useState(false);
   const watchedTitle = form.watch("song.title");
   const watchedArtist = form.watch("song.artist");
-  const { createOrUpdateArrangement } = useCreateOrUpdateArrangement(origArrangement?.id);
+  const { createOrUpdateArrangement, isMutating } = useCreateOrUpdateArrangement(origArrangement?.id);
 
   useEffect(() => {
     return autoScrollWindowForElements();
@@ -125,6 +125,7 @@ export default function ArrangementForm({
 
           <FormFooter
             disabled={isSaveDisabled}
+            loading={isMutating}
             label={t("saveSong")}
             cancelButton={closeButton}
           />
