@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSWRConfig } from "swr";
 
 export type EditFormHandle = {
   submit: (scope: "service" | "both") => void;
@@ -40,6 +41,7 @@ export default function ServiceSongUnitEditForm({
     },
   });
 
+  const { mutate } = useSWRConfig();
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const { createOrUpdateArrangement: saveToService, isMutating: savingService } =
@@ -88,6 +90,7 @@ export default function ServiceSongUnitEditForm({
       } else {
         await saveToService(buildServicePayload(data));
       }
+      mutate((key) => typeof key === "string" && key.startsWith("/api/services"));
       onSaved();
     } catch {
       setSaveError(t("saveError"));
