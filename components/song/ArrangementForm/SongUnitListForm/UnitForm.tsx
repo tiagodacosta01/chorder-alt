@@ -132,7 +132,8 @@ export default function UnitForm({
   }, [onChangeUnit, unit]);
 
   const handleRepeatClick = useCallback(() => {
-    const next = (unit.repeatCount ?? 1) > 1 ? 1 : 2;
+    const current = unit.repeatCount ?? 1;
+    const next = current >= 4 ? 1 : current + 1;
     onChangeUnit({ ...unit, repeatCount: next });
   }, [onChangeUnit, unit]);
 
