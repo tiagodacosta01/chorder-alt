@@ -16,13 +16,14 @@ datasource db {
 }
 
 model Song {
-  id        Int     @id @default(autoincrement())
-  legacyId  Int? @unique
-  title     String
-  slug      String @unique
-  lyrics    String
-  artist    String?
-  isDeleted Boolean @default(false)
+  id         Int     @id @default(autoincrement())
+  legacyId   Int?    @unique
+  title      String
+  slug       String  @unique
+  lyrics     String
+  artist     String?
+  isDeleted  Boolean @default(false)
+  holyricsId String?
 
   arrangements SongArrangement[]
   tags         Tag[]
@@ -126,4 +127,10 @@ model ServiceUnit {
 
 enum ServiceUnitType {
   SONG
+}
+
+model HolyricsConfig {
+  id    Int    @id @default(1)
+  token String @default("")
+  host  String @default("localhost:8091")
 }

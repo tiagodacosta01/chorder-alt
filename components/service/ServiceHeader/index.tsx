@@ -7,6 +7,7 @@ import { ClientService, ServiceRef } from "@/prisma/models";
 import { Calendar, ChevronLeft, ChevronRight, MicVocal, SlidersHorizontal } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import HolyricsSetlistButton from "./HolyricsSetlistButton";
 import ServiceActionMenu from "./ServiceActionMenu";
 import ServiceConfig from "./ServiceConfig";
 import Skeleton from "./Skeleton";
@@ -35,6 +36,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
             <ServiceNavButton dir="prev" serviceRef={service.prevService} />
             <ServiceNavButton dir="next" serviceRef={service.nextService} />
             <div className="w-px h-5 bg-border mx-1" />
+            <HolyricsSetlistButton service={service} />
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon">
                 <SlidersHorizontal />

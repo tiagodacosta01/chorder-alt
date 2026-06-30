@@ -34,11 +34,12 @@ export async function PATCH(
     return Response.json({ success: true });
   }
 
-  if (body.title !== undefined || "artist" in body || Array.isArray(body.tagIds)) {
-    const data: { title?: string; artist?: string | null; tagIds?: number[] } = {};
+  if (body.title !== undefined || "artist" in body || Array.isArray(body.tagIds) || "holyricsId" in body) {
+    const data: { title?: string; artist?: string | null; tagIds?: number[]; holyricsId?: string | null } = {};
     if (body.title !== undefined) data.title = body.title;
     if ("artist" in body) data.artist = body.artist ?? null;
     if (Array.isArray(body.tagIds)) data.tagIds = body.tagIds;
+    if ("holyricsId" in body) data.holyricsId = body.holyricsId ?? null;
     await updateSongInfo(slugOrId, data);
     return Response.json({ success: true });
   }

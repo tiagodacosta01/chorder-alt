@@ -36,8 +36,9 @@ export const SONG_UNIT_TYPES = [
   "TEXT",
 ] as const;
 
-export type ClientSong = Omit<Song, "id" | "legacyId"> & {
+export type ClientSong = Omit<Song, "id" | "legacyId" | "holyricsId"> & {
   id?: number;
+  holyricsId?: string | null;
   arrangements?: ClientArrangement[];
   tags?: ClientTag[];
   lastUsedAt?: Date | null;

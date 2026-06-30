@@ -147,6 +147,7 @@ export async function retrieveSongs({
       lyrics: true,
       artist: true,
       isDeleted: true,
+      holyricsId: true,
       arrangements: {
         where: { isServiceArrangement: false, isDeleted: false },
         select: {
@@ -218,7 +219,7 @@ export async function archiveSong(slug: string) {
 
 export async function updateSongInfo(
   slug: string,
-  data: { title?: string; artist?: string | null; tagIds?: number[] }
+  data: { title?: string; artist?: string | null; tagIds?: number[]; holyricsId?: string | null }
 ): Promise<void> {
   const { tagIds, ...rest } = data;
   await prisma.song.update({
