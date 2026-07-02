@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Main from "@/components/common/Main";
 import AdminTagsClient from "./AdminTagsClient";
 import prisma from "@/prisma/client";

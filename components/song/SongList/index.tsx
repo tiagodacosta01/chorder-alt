@@ -48,7 +48,7 @@ export default function SongList({
 
 function sortByTitle(songs: { title: string }[]) {
   songs.sort((a, b) =>
-    a.title.toLocaleLowerCase().localeCompare(b.title.toLocaleLowerCase())
+    a.title.toLocaleLowerCase().localeCompare(b.title.toLocaleLowerCase(), "pt-BR")
   );
 }
 
