@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ListMusic, Music } from "lucide-react";
+import { ListMusic, Music, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,6 +31,12 @@ export default function NavBar() {
         icon={<Music size={24} />}
         label={t("songs")}
         active={currentPage === "songs"}
+      />
+      <NavItem
+        href="/admin"
+        icon={<Settings size={24} />}
+        label={t("admin")}
+        active={currentPage === "admin"}
       />
     </>
   );
