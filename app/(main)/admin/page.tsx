@@ -38,8 +38,8 @@ export default function AdminPage() {
         <Heading level={1}>Administração</Heading>
       </div>
       <Main>
-        <div className="max-w-2xl mx-auto py-8 px-4">
-          <div className="grid gap-4 sm:grid-cols-2">
+        <div className="pb-6 sm:pb-8 lg:pb-14">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {links.map(({ href, icon: Icon, title, description }) => (
               <Link key={href} href={href}>
                 <Card className="p-5 hover:border-secondary transition-colors h-full">
